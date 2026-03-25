@@ -1,20 +1,43 @@
 #include <iostream>
-#include <numbers> 
+#include <cmath> // Для использования числа M_PI
+
 using namespace std;
 
-
-int main(){
-    double pi = std::numbers::pi;
-    double radius;
-    double alpha;
-    cout << "Введите радиус окружности - ";
+int main() {
+    double radius;      // Радиус круга
+    double angle;       // Угол кругового сектора (в градусах)
+    
+    // Ввод данных
+    cout << "Введите радиус круга: ";
     cin >> radius;
-
-    cout << "Введите угловую меру сектора в градусах(от 0 до 360) - ";
-    cin >> alpha;
-    double S = pi*radius*radius;
-    double P = 2*radius*pi;
-    double sec = (pi*radius*radius*alpha)/360;
-    cout << S << " " << P << " " << sec << endl;
+    
+    cout << "Введите угол кругового сектора (в градусах): ";
+    cin >> angle;
+    
+    // Проверка корректности введенных данных
+    if (radius <= 0) {
+        cout << "Ошибка: радиус должен быть положительным числом!" << endl;
+        return 1;
+    }
+    
+    if (angle <= 0 || angle > 360) {
+        cout << "Ошибка: угол должен быть в диапазоне (0, 360] градусов!" << endl;
+        return 1;
+    }
+    
+    // Вычисления
+    double area = M_PI * radius * radius;           // Площадь круга: π * r²
+    double perimeter = 2 * M_PI * radius;           // Длина окружности: 2 * π * r
+    double sectorArea = area * (angle / 360.0);      // Площадь сектора: (угол/360) * площадь круга
+    
+    // Вывод результатов с точностью до 2 знаков после запятой
+    cout.precision(2);
+    cout << fixed;
+    
+    cout << "\nРезультаты вычислений:" << endl;
+    cout << "Площадь круга: " << area << " квадратных единиц" << endl;
+    cout << "Периметр круга (длина окружности): " << perimeter << " единиц" << endl;
+    cout << "Площадь кругового сектора (угол " << angle << "°): " << sectorArea << " квадратных единиц" << endl;
+    
     return 0;
 }
