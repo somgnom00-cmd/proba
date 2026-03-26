@@ -29,7 +29,7 @@ int main() {
     double area = M_PI * radius * radius;           // Площадь круга: π * r²
     double perimeter = 2 * M_PI * radius;           // Длина окружности: 2 * π * r
     double sectorArea = area * (angle / 360.0);      // Площадь сектора: (угол/360) * площадь круга
-    
+    //test
     // Вывод результатов с точностью до 2 знаков после запятой
     cout.precision(2);
     cout << fixed;
